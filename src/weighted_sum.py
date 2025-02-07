@@ -9,7 +9,8 @@ def calculate_weighted_sums_country_level(intersections, variables_to_include):
     for variable in variables_to_include:
         # Calculate the weighted values for each variable
         intersections['weighted_value'] = pd.to_numeric(intersections[variable], errors='coerce') * intersections['intersection_weight']
-        intersections['Country'] = intersections['NUTS_ID'].str[:2]  # Extract the first two characters to identify each country
+        # Extract the first two characters to identify each country
+        intersections['Country'] = intersections['NUTS_ID'].str[:2]
         
         weighted_sum_series = intersections.groupby(['Country', 'Year'], as_index=False, group_keys=False).apply(
             lambda group: pd.Series({
@@ -18,7 +19,6 @@ def calculate_weighted_sums_country_level(intersections, variables_to_include):
             include_groups=False
         )
         
-
         # Merge the data
         results.append(weighted_sum_series)
 

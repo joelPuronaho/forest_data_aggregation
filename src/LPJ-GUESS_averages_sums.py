@@ -73,7 +73,7 @@ def calculate_weighted_averages_nuts_level(intersections, variables_to_include):
 
     for variable in variables_to_include:
         
-        # Calculate the weighted values for each variable, handle NULL data (NULL -> NaN)
+        # Calculate the weighted values for each variable
         intersections['weighted_value'] = pd.to_numeric(intersections[variable], errors='coerce') * intersections['intersection_weight']
         weighted_avg_series = intersections.groupby(['NUTS_ID', 'Year'], as_index=False, group_keys=False).apply(
             lambda group: pd.Series({
@@ -101,7 +101,8 @@ def calculate_weighted_averages_country_level(intersections, variables_to_includ
     for variable in variables_to_include:
         # Calculate the weighted values for each variable
         intersections['weighted_value'] = pd.to_numeric(intersections[variable], errors='coerce') * intersections['intersection_weight']
-        intersections['Country'] = intersections['NUTS_ID'].str[:2]  # Extract the first two characters to identify each country
+        # Extract the first two characters to identify each country
+        intersections['Country'] = intersections['NUTS_ID'].str[:2]
         
         weighted_avg_series = intersections.groupby(['Country', 'Year'], as_index=False, group_keys=False).apply(
             lambda group: pd.Series({
