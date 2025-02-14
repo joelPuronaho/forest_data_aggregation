@@ -30,6 +30,9 @@ pip install geopandas pandas shapely
 ### .out files
 - LPJ-GUESS sample outputs
 
-### Bugs, future changes etc. "selfnotes"
+
+
+
+## Bugs, future changes etc. "selfnotes"
 - Country level calculations are currently done based on the grid cell aggregated data. This might create some bias and skew the results -> Solve by creating new script that calculates the greater than NUTS-level data straight from cordinate data without grid cell aggregation 
 - Some complicated shapes within grid cells might cause inaccuracies (tested with NUTS-area surface area calculation, complicated NUTS-area shapes resulted in wrong surface areas) -> Solve by checking the grid cell areas and intersection areas
