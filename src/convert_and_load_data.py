@@ -2,7 +2,8 @@ import csv
 import geopandas as gpd
 import pandas as pd
 
-#region Convert out to csv
+#region Convert out to csv 
+# *Selfnote: This could be removed and use .out files for the calculations
 def convert_out_file_to_csv(input_file, output_file):
     
     with open(input_file, "r") as file:

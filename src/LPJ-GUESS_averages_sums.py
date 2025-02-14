@@ -89,7 +89,7 @@ def extract_variables(forest_data):
 shapefile_path = '../input_data/nuts_data/NUTS_RG_20M_2024_3035_LEVL_2.shp'
 
 # Define input file prefix
-INPUT_FILE_NAME = 'cpool_2020'
+INPUT_FILE_NAME = 'cpool'
 
 # File extensions for .out and .csv
 forest_data_path_out = '../input_data/lpj-guess_out/' + INPUT_FILE_NAME + '.out'
