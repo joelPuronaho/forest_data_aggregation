@@ -28,7 +28,7 @@ git clone https://github.com/joelPuronaho/forest_data_aggregation.git
 
 Then, navigate to /src/ inside the repository and run (bash):
 ```bash
-python LPJ-GUESS_averages_sums.py
+python LPJ-GUESS_aggregation.py
 ```
 
 Or use any other method you prefer to run the main file.
