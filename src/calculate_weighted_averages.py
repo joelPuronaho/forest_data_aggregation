@@ -22,7 +22,7 @@ def calculate_weighted_averages_nuts_level(intersections, variables_to_include):
 
     # Print progress
     print("6: Weighted averages calculated per NUTS-area")
-    intersections.to_csv("intersections.csv", index=False, sep=";", decimal=",")
+
     # Return results: filter duplicate columns from output
     return pd.concat(results, axis=1).loc[:, ~pd.concat(results, axis=1).columns.duplicated()]
 #endregion
