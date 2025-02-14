@@ -80,9 +80,7 @@ def extract_variables(forest_data):
 
 #region Input and output data paths
 
-# Shapefile for NUTS-areas - *Note: 2024 file has no UK*
-# Selfnote: Append 2021 with 2024 UK data (+ other possibly missing data)
-
+# Shapefile for NUTS-areas
 #shapefile_path = '../input_data/nuts_data/NUTS_RG_20M_2021_4326_LEVL_2.shp'
 shapefile_path = '../input_data/nuts_data/NUTS_RG_20M_2024_3035_LEVL_2.shp'
 
