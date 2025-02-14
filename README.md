@@ -16,7 +16,10 @@ pip install geopandas pandas shapely
 ```
 
 ## Script Usage
-1. Navigate to /src/, and in terminal (bash) run: ```python LPJ-GUESS_averages_sums.py```
+1. Navigate to /src/, and in terminal (bash) run:
+```bash
+python LPJ-GUESS_averages_sums.py
+```
 2. Outputs are in /output/csv/ (separator=",", decimal=".") and /output/excel/ (separator=";", decimal=",")
 
 - Change LPJ-GUESS data by changing the INPUT_FILE_NAME accordingly (e.g. cpool -> diamstruct_cmass_froot_forest) in LPJ-GUESS_averages_sums.py
