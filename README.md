@@ -3,9 +3,9 @@
 ## Overview
 A tool to calculate weighted averages and sums of LPJ-GUESS variables for NUTS-areas and on a country-level.
 
-It takes LPJ-GUESS sample data and NUTS-area shapefile as inputs, and outputs csv files containing yearly averages and sums for each NUTS-area and country.
+It takes LPJ-GUESS sample data and NUTS-area shapefile as inputs. The outputs are csv files containing yearly averages and sums for each NUTS-area and country.
 
-A grid cell is created for each coordinate in LPJ-GUESS data. Then a weight is calculated for each data point based on how portion of the grid cell area intersects with a NUTS-area. 
+A grid cell is created for each coordinate in the LPJ-GUESS data. Then a weight is calculated for each data point based on the portion of the grid cell that intersects with a NUTS-area. The weights are then applied for each LPJ-GUESS variable value which are used to calculate the yearly weighted averages and sums.
 
 ## Requirements
 Tested with Python version 3.12.2
@@ -52,3 +52,9 @@ Outputs are in:
 
 - Change LPJ-GUESS input data by changing the 'INPUT_FILE_NAME' in 'LPJ-GUESS_averages_sums.py' (e.g. cpool -> diamstruct_cmass_froot_forest)
 - Change NUTS-data by changing 'shapefile_path' in LPJ-GUESS_averages_sums.py
+
+
+## Possible bugs, future changes etc. "selfnotes"
+- The method to calculate grid cell and intersection surface areas is subject to change, if a better more accurate method is found.
+- Country level calculations are currently done based on the grid cell aggregated data. This might create some bias and skew the results -> Additional script that calculates the averages straight from the coordinate data without grid cell aggregation in between 
+- Some complicated shapes within grid cells might cause inaccuracies (tested with NUTS-area surface area calculation: complicated NUTS-area shapes resulted in inaccurate surface areas) -> Needs to be verified
