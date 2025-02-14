@@ -17,14 +17,10 @@ pip install geopandas pandas shapely
 ```
 
 ## Script Usage
-1. Navigate to /src/, and in terminal (bash) run:
+Navigate to /src/, and run (bash):
 ```bash
 python LPJ-GUESS_averages_sums.py
 ```
-2. Outputs are in /output/csv/ (separator=",", decimal=".") and /output/excel/ (separator=";", decimal=",")
-
-- Change LPJ-GUESS data by changing the INPUT_FILE_NAME accordingly (e.g. cpool -> diamstruct_cmass_froot_forest) in LPJ-GUESS_averages_sums.py
-- Change NUTS-data by changing shapefile_path in LPJ-GUESS_averages_sums.py
 
 ## Input files
 ### Shapefiles
@@ -33,6 +29,15 @@ python LPJ-GUESS_averages_sums.py
     - 3035 = EPSG system
 ### .out files
 - LPJ-GUESS sample outputs
+
+## Output files
+Outputs are in:
+-  /output/csv/ (separator=",", decimal=".")
+- /output/excel/ (separator=";", decimal=",")
+
+- Change LPJ-GUESS input data by changing the 'INPUT_FILE_NAME' in 'LPJ-GUESS_averages_sums.py' (e.g. cpool -> diamstruct_cmass_froot_forest)
+- Change NUTS-data by changing 'shapefile_path' in LPJ-GUESS_averages_sums.py
+
 
 ## Bugs, future changes etc. "selfnotes"
 
