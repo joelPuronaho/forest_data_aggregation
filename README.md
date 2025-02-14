@@ -16,11 +16,20 @@ Installing instructions in bash:
 pip install geopandas pandas shapely
 ```
 
-## Script Usage
-Navigate to /src/, and run (bash):
+## Usage
+You can clone the repository with the following command:
+
+```bash
+git clone https://github.com/joelPuronaho/forest_data_aggregation.git
+```
+
+
+Then, navigate to /src/ inside the repository and run (bash):
 ```bash
 python LPJ-GUESS_averages_sums.py
 ```
+
+Or use any other method you prefer to run the main file.
 
 ## Input files
 ### Shapefiles
