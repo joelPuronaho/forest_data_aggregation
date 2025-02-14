@@ -1,10 +1,11 @@
 # README
 
 ## Overview
-This script calculates weighted averages and sums of LPJ-GUESS variables. They are aggregated for NUTS-areas and on country level . It utilizes GeoPandas for handling geographic data, Pandas for data manipulation, and Shapely for creating geometries. The script is designed to work with shapefiles and CSV files containing spatial information.
+A tool to calculate weighted averages and sums of LPJ-GUESS variables for NUTS-areas and on a country-level.
+
+It takes LPJ-GUESS sample data and NUTS-area shapefile as inputs, and outputs csv files containing yearly averages and sums for each NUTS-area and country.
 
 ## Requirements
-
 Tested with Python version 3.12.2
 
 The following Python libraries are used: geopandas, pandas, shapely
@@ -33,9 +34,8 @@ python LPJ-GUESS_averages_sums.py
 ### .out files
 - LPJ-GUESS sample outputs
 
-
-
-
 ## Bugs, future changes etc. "selfnotes"
+
+- The method to calculate grid cell and intersection areas is subject to change, if a better, more accurate method is found.
 - Country level calculations are currently done based on the grid cell aggregated data. This might create some bias and skew the results -> Solve by creating new script that calculates the greater than NUTS-level data straight from cordinate data without grid cell aggregation 
 - Some complicated shapes within grid cells might cause inaccuracies (tested with NUTS-area surface area calculation, complicated NUTS-area shapes resulted in wrong surface areas) -> Solve by checking the grid cell areas and intersection areas
