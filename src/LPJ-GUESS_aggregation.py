@@ -34,9 +34,7 @@ def calculate_grid_cell_and_intersected_area(forest_data, nuts_areas):
     grid_cells = grid_cells.to_crs("EPSG:3035")
     
     # Calculating the grid cell areas in km2
-    #grid_cells['area_km2'] = grid_cells.geometry.area / 1000000
     grid_cells['area_km2'] = pd.to_numeric(grid_cells.geometry.area / 1000000, errors='coerce')
-
 
     # Set the same EPSG for NUTS-areas
     nuts_areas = nuts_areas.to_crs("EPSG:3035")

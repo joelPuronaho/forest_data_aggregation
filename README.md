@@ -5,6 +5,8 @@ A tool to calculate weighted averages and sums of LPJ-GUESS variables for NUTS-a
 
 It takes LPJ-GUESS sample data and NUTS-area shapefile as inputs, and outputs csv files containing yearly averages and sums for each NUTS-area and country.
 
+A grid cell is created for each coordinate in LPJ-GUESS data. Then a weight is calculated for each data point based on how portion of the grid cell area intersects with a NUTS-area. 
+
 ## Requirements
 Tested with Python version 3.12.2
 
