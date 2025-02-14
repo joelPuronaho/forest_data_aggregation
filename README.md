@@ -39,9 +39,9 @@ Or use any other method you prefer to run the main file.
 ### .out files
 - LPJ-GUESS sample outputs
 
-NUTS-data source
+NUTS-data source:
 https://gisco-services.ec.europa.eu/distribution/v2/
-https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/#nuts24
+- Navigate to: NUTS -> ZIPPED FILES -> Choose the preferred scale and file format
 
 ## Output files
 Outputs are in:
