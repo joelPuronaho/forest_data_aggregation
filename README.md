@@ -39,6 +39,10 @@ Or use any other method you prefer to run the main file.
 ### .out files
 - LPJ-GUESS sample outputs
 
+NUTS-data source
+https://gisco-services.ec.europa.eu/distribution/v2/
+https://gisco-services.ec.europa.eu/distribution/v2/nuts/download/#nuts24
+
 ## Output files
 Outputs are in:
 -  /output/csv/ (separator=",", decimal=".")
