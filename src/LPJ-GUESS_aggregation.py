@@ -22,7 +22,7 @@ def create_geometry(data, lon_column, lat_column, degree):
 #endregion
 
 #region calculate_grid_cell_and_intersected_area
-def calculate_grid_cell_and_intersected_area(forest_data, nuts_areas):
+def calculate_grid_cell_and_intersected_area(forest_data, nuts_areas, save_grid_cell_surface_areas):
 
     # Add geometry column of gridd cells to forest_data (0.5-degree resolution cell grid)
     forest_data = create_geometry(forest_data, 'Lon', 'Lat', degree=0.5)
@@ -35,6 +35,9 @@ def calculate_grid_cell_and_intersected_area(forest_data, nuts_areas):
     
     # Calculating the grid cell areas in km2
     grid_cells['area_km2'] = pd.to_numeric(grid_cells.geometry.area / 1000000, errors='coerce')
+
+    if save_grid_cell_surface_areas == 1:
+        grid_cells.to_csv("../output/grid_cell_surface_areas/grid_cells_with_area.csv", decimal=",", sep=";", index=False)
 
     # Set the same EPSG for NUTS-areas
     nuts_areas = nuts_areas.to_crs("EPSG:3035")
@@ -55,7 +58,26 @@ def calculate_grid_cell_and_intersected_area(forest_data, nuts_areas):
     if not all(0 - tolerance <= w <= 1 + tolerance for w in intersections['intersection_weight']):
         raise ValueError("Some weights are outside the expected range of [0, 1].")
 
+    #intersections.to_csv("../output/grid_cell_surface_areas/intersections.csv", decimal=",", sep=";", index=False)    
     print("5: Grid cells created and intersected areas calculated for grid cells")
+
+
+    print(intersections)
+    #intersections.to_csv("intersections.csv", decimal=",", sep=";", index=False)
+
+
+
+
+    # Load the NUTS-area surface area csv
+    nuts_surface_area_df = pd.read_csv("../input_data/filtered_nuts2_surface_areas_landuse_total.csv", sep=';')
+
+    # Keep only relevant columns
+    nuts_surface_area_df = nuts_surface_area_df[['NUTS_ID', 'official_surface_area_2021']]
+    
+    # Merge with the intersections GeoDataFrame on NUTS_ID
+    intersections = intersections.merge(nuts_surface_area_df, on='NUTS_ID', how='left')
+
+    #print(intersections)
     return intersections
 #endregion
 
@@ -82,7 +104,7 @@ def extract_variables(forest_data):
 
 # Shapefile for NUTS-areas
 #shapefile_path = '../input_data/nuts_data/NUTS_RG_20M_2021_4326_LEVL_2.shp'
-shapefile_path = '../input_data/nuts_data/NUTS_RG_20M_2024_3035_LEVL_2.shp'
+shapefile_path = '../input_data/nuts_data/NUTS_RG_60M_2021_3035_LEVL_2.shp'
 
 # Define input file prefix
 INPUT_FILE_NAME = 'cpool'
@@ -118,13 +140,19 @@ def main():
     # Extract the variables from the LPJ-GUESS input file
     variables_to_include = extract_variables(forest_data)
 
-    # Create grid cell, calculate intersected areas for NUTS-areas and grid cells
-    intersections = calculate_grid_cell_and_intersected_area(forest_data, nuts_areas)
+    
+    # Choose if you want to save the grid cell dataframe separately, containing the surface areas.
+    # 1 = save separately, 0 = do not save
+    # Output in: ../output/grid_cells_surface_areas/grid_cells_with_area.csv 
+    save_grid_cell_surface_areas = 1
 
+    # Create grid cell, calculate intersected areas for NUTS-areas and grid cells
+    intersections = calculate_grid_cell_and_intersected_area(forest_data, nuts_areas, save_grid_cell_surface_areas)
+    
     # Calculate weighted averages: NUTS-area level
     weighted_avg_df_nuts = calculate_weighted_averages.calculate_weighted_averages_nuts_level(intersections, variables_to_include)
     save_results(weighted_avg_df_nuts, output_path_nuts_avg, output_path_semicolon_nuts_avg)
-
+    asd
     # Calculate weighted averages: Country level
     weighted_avg_df_country = calculate_weighted_averages.calculate_weighted_averages_country_level(intersections, variables_to_include)
     save_results(weighted_avg_df_country, output_path_country_avg, output_path_semicolon_country_avg)
