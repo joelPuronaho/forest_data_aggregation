@@ -105,7 +105,6 @@ def calculate_grid_cell_and_intersected_area(forest_data, nuts_areas, save_grid_
 #region Input and output data paths
 
 # Shapefile for NUTS-areas
-#shapefile_path = '../input_data/nuts_data/NUTS_RG_20M_2021_4326_LEVL_2.shp'
 shapefile_path = '../input_data/nuts_data/NUTS_RG_60M_2021_3035_LEVL_2.shp'
 
 # Define input file prefix
