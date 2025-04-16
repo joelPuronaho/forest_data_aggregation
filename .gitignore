@@ -1,4 +1,5 @@
 output/csv/*cpool_2020*
 output/excel/*cpool_2020*
 __pycache__/
-**/intersections.csv
+**intersections**
+output*

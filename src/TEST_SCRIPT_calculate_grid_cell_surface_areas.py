@@ -3,6 +3,7 @@ import os
 import geopandas as gpd
 import pandas as pd
 from shapely.geometry import Polygon
+import re
 
 # Helpers
 import convert_and_load_data
@@ -60,26 +61,18 @@ def calculate_grid_cell_and_intersected_area(forest_data, nuts_areas, save_grid_
     #if not all(0 - tolerance <= w <= 1 + tolerance for w in intersections['intersection_weight']):
     #    raise ValueError("Some weights are outside the expected range of [0, 1].")
 
-    #intersections.to_csv("../output/grid_cell_surface_areas/intersections.csv", decimal=",", sep=";", index=False)    
+    # Print progress
     #print("5: Grid cells created and intersected areas calculated for grid cells")
 
-
-    #print(intersections)
-    #intersections.to_csv("intersections.csv", decimal=",", sep=";", index=False)
-
-
-
-
-    # Load the NUTS-area surface area csv
+    # Load the NUTS region surface area data csv's
     #nuts_surface_area_df = pd.read_csv("../input_data/filtered_nuts2_surface_areas_landuse_total.csv", sep=';')
-
+    
     # Keep only relevant columns
     #nuts_surface_area_df = nuts_surface_area_df[['NUTS_ID', 'official_surface_area_2021']]
     
     # Merge with the intersections GeoDataFrame on NUTS_ID
     #intersections = intersections.merge(nuts_surface_area_df, on='NUTS_ID', how='left')
 
-    #print(intersections)
     #return intersections
 #endregion
 
@@ -105,7 +98,7 @@ def calculate_grid_cell_and_intersected_area(forest_data, nuts_areas, save_grid_
 #region Input and output data paths
 
 # Shapefile for NUTS-areas
-shapefile_path = '../input_data/nuts_data/NUTS_RG_60M_2021_3035_LEVL_2.shp'
+shapefile_path = '../input_data/nuts_data/NUTS_RG_01M_2021_3035_LEVL_2.shp'
 
 # Define input file prefix
 INPUT_FILE_NAME = 'cpool'
