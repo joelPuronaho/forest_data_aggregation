@@ -3,7 +3,7 @@ import os
 import geopandas as gpd
 import pandas as pd
 from shapely.geometry import Polygon
-import re
+#import re
 
 # Helpers
 import convert_and_load_data
