@@ -23,12 +23,13 @@ def calculate_weighted_sums_country_level(intersections, variables_to_include):
         
         # Merge the data
         results.append(weighted_sum_series)
-
+    
     # Print progress
     print("9: Weighted sums calculated per country")
 
-    # Return results: filter duplicate columns from output
-    return pd.concat(results, axis=1).loc[:, ~pd.concat(results, axis=1).columns.duplicated()]
+    # Filter duplicate columns from the output and return results 
+    results = pd.concat(results, axis=1).loc[:, ~pd.concat(results, axis=1).columns.duplicated()]
+    return results
 #endregion
 
 #region Calculate weighted sum per NUTS-area
@@ -52,8 +53,9 @@ def calculate_weighted_sums_nuts_level(intersections, variables_to_include):
         results.append(weighted_sum_series)
     
     # Print progress
-    print("8: Weighted sums calculated per NUTS-area")
-
-    # Return results: filter duplicate columns from output
-    return pd.concat(results, axis=1).loc[:, ~pd.concat(results, axis=1).columns.duplicated()]
+    print("8: Weighted sums calculated per NUTS region")
+    
+    # Filter duplicate columns from the output and return results 
+    results = pd.concat(results, axis=1).loc[:, ~pd.concat(results, axis=1).columns.duplicated()]
+    return results
 #endregion
