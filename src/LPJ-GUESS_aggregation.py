@@ -96,7 +96,7 @@ def extract_variables(forest_data):
 shapefile_path = '../input_data/nuts_data/NUTS_RG_01M_2021_3035_LEVL_2.shp'
 
 # Define input file prefix
-INPUT_FILE_NAME = 'cpool_2020'
+INPUT_FILE_NAME = 'cpool'
 
 NUTS_YEAR_SCALE = f"{re.search(r'NUTS_RG_(\d+M)_(\d{4})', shapefile_path).groups()[1]}_{re.search(r'NUTS_RG_(\d+M)_(\d{4})', shapefile_path).groups()[0]}"
 
