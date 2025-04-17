@@ -38,7 +38,7 @@ def calculate_grid_cell_and_intersected_area(forest_data, nuts_areas, save_grid_
     grid_cells['area_km2'] = pd.to_numeric(grid_cells.geometry.area / 1000000, errors='coerce')
 
     if save_grid_cell_surface_areas == 1:
-        grid_cells.to_csv("../output/grid_cell_surface_areas/grid_cells_with_surface_area_test1.csv", decimal=",", sep=";", index=False)
+        grid_cells.to_csv("../output/grid_cell_surface_areas/grid_cells_with_surface_areas.csv", decimal=",", sep=";", index=False)
 
     # Exit function
     return
