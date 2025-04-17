@@ -4,3 +4,4 @@ __pycache__/
 **intersections**
 output*
 input_data/surface_area_data/*
+output/surface_area_grid_cell
