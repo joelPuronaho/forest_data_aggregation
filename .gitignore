@@ -3,3 +3,4 @@ output/excel/*cpool_2020*
 __pycache__/
 **intersections**
 output*
+input_data/surface_area_data/*
